@@ -56,7 +56,7 @@ func (x *Cache) MessageFields(v *protogen.Message) []Field {
 	)
 	for _, field := range v.Fields {
 		var name string
-		if field.Oneof != nil {
+		if field.Oneof != nil && !field.Oneof.Desc.IsSynthetic() {
 			name = field.Oneof.GoName
 		} else {
 			name = field.GoName
